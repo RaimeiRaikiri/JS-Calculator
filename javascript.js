@@ -42,12 +42,6 @@ function checkForOperatorAvaliable()
             operatorAvaliable = false;
         }
 }
-function checkForOperatorPressed() {
-    if (operator !== '')
-        {
-            operatorPressed = true;
-        }
-}
 function canAddMoreNumbersToCalculation(input)
 {
     if (input.includes('.') && input.length < 10)
@@ -71,6 +65,7 @@ function addNumber(number)
             if (canAddMoreNumbersToCalculation(num2))
                 {
                     num2 += number;
+                    equalsAvaliable = true;
                 }
         }
     else 
@@ -79,10 +74,44 @@ function addNumber(number)
                 {
                     num1 += number;
                 }
-        }
+            }
+            
+            display.textContent = num1 + ' ' + operator + ' ' + num2;
+            checkForOperatorAvaliable();
+}
 
-    display.textContent = num1 + ' ' + operator + ' ' + num2;
-    checkForOperatorAvaliable();
+function addOperator(currentOperator) {
+    if (operatorAvaliable)
+        {
+            operatorPressed = true;
+            switch (currentOperator)
+                {
+                    case '+':
+                        operator = '+';
+                        display.textContent = num1 + ' ' + operator + ' ' + num2;
+                        break;
+                    case '-':
+                        operator = '-';
+                        display.textContent = num1 + ' ' + operator + ' ' + num2;
+                        break;
+                        
+                    case '÷':
+                        operator = '÷';
+                        display.textContent = num1 + ' ' + operator + ' ' + num2;
+                        break;
+
+                    case '×':
+                        operator = '×';
+                        display.textContent = num1 + ' ' + operator + ' ' + num2;
+                        break;
+
+                    case '%':
+                        operator = '%';
+                        display.textContent = num1 + ' ' + operator + ' ' + num2;
+                        break;
+
+                }
+        }
 }
 
 function allClear()
@@ -106,6 +135,12 @@ buttonSix.addEventListener('click', () => addNumber('6'));
 buttonSeven.addEventListener('click', () => addNumber('7'));
 buttonEight.addEventListener('click', () => addNumber('8'));
 buttonNine.addEventListener('click', () => addNumber('9'));
+
+addButton.addEventListener('click', () => addOperator('+'));
+subtractButton.addEventListener('click', () => addOperator('-'));
+divideButton.addEventListener('click', () => addOperator('÷'));
+multiplyButton.addEventListener('click', () => addOperator('×'));
+remainderButton.addEventListener('click', () => addOperator('%'));
 
 allClearButton.addEventListener('click', allClear);
 
