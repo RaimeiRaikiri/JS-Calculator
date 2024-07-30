@@ -24,7 +24,7 @@ const addButton = document.querySelector('#add');
 const subtractButton = document.querySelector('#subtract');
 const divideButton = document.querySelector('#divide');
 const multiplyButton = document.querySelector('#multiply');
-const remainderButton = document.querySelector('#remainder');
+const percentageButton = document.querySelector('#percentage');
 
 const allClearButton = document.querySelector('#allClear');
 const decimalButton = document.querySelector('#decimalPlace');
@@ -107,11 +107,50 @@ function addOperator(currentOperator) {
 
                     case '%':
                         operator = '%';
-                        display.textContent = num1 + ' ' + operator + ' ' + num2;
+                        equalsAvaliable = true;
                         break;
 
                 }
         }
+}
+function postCalculationSetup(totalNum)
+{
+    display.textContent = totalNum.toString();
+    equalsAvaliable = false;
+    operatorPressed = false;
+    operatorAvaliable = true;
+    num2 = '';
+    num1 = totalNum.toString();
+}
+function calculation()
+{
+    if (equalsAvaliable)
+        {
+    finalNum = 0;
+    switch (operator)
+    {
+        case '+':
+            finalNum = parseFloat(num1) + parseFloat(num2);
+            postCalculationSetup(finalNum);
+            break;
+        case '-':
+            finalNum = parseFloat(num1) - parseFloat(num2);
+            postCalculationSetup(finalNum);
+            break;
+        case '÷':
+            finalNum = parseFloat(num1) / parseFloat(num2);
+            postCalculationSetup(finalNum);
+            break;
+        case '×':
+            finalNum = parseFloat(num1) * parseFloat(num2);
+            postCalculationSetup(finalNum);
+            break;
+        case '%':
+            finalNum = parseFloat(num1) / 100;
+            postCalculationSetup(finalNum);
+            break;
+    }
+}
 }
 
 function allClear()
@@ -140,7 +179,11 @@ addButton.addEventListener('click', () => addOperator('+'));
 subtractButton.addEventListener('click', () => addOperator('-'));
 divideButton.addEventListener('click', () => addOperator('÷'));
 multiplyButton.addEventListener('click', () => addOperator('×'));
-remainderButton.addEventListener('click', () => addOperator('%'));
+percentageButton.addEventListener('click', function () {
+    addOperator('%');
+    calculation();
+});
 
 allClearButton.addEventListener('click', allClear);
+equalsButton.addEventListener('click', calculation)
 
