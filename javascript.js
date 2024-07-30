@@ -3,8 +3,13 @@ let num1 = '';
 let operator = '';
 let num2 = '';
 
+let operatorAvaliable = false;
+let operatorPressed = false;
+let equalsAvaliable = false;
+
 const display = document.querySelector('#display');
 
+const buttonZero = document.querySelector('#zero')
 const buttonOne = document.querySelector('#one');
 const buttonTwo = document.querySelector('#two');
 const buttonThree = document.querySelector('#three');
@@ -26,17 +31,68 @@ const decimalButton = document.querySelector('#decimalPlace');
 const plusMinus = document.querySelector('#plusMinus');
 const equalsButton = document.querySelector('#equals');
 
-function inputOne(){
-    if (num1.length < 10 && num1.includes('.'))
+function checkForOperatorAvaliable()
+{
+    if (num1 !== '')
         {
-            num1 += '1'
+            operatorAvaliable = true;
         }
-    else if (num1.length < 9)
+    if (num2 !== '')
         {
-            num1 += '1'
+            operatorAvaliable = false;
         }
-    display.textContent = num1;
-
+}
+function checkForOperatorPressed() {
+    if (operator !== '')
+        {
+            operatorPressed = true;
+        }
+}
+function canAddMoreNumbersToCalculation(input)
+{
+    if (input.includes('.') && input.length < 10)
+        {
+            return true;
+        }
+    else if (input.length < 9)
+        {
+            return true;
+        }
+    else 
+    {
+        return false;
+    }
 }
 
-buttonOne.addEventListener('click', inputOne);
+function addNumber(number)
+{
+    if (operatorPressed)
+        {
+            if (canAddMoreNumbersToCalculation(num2))
+                {
+                    num2 += number;
+                }
+        }
+    else 
+        {
+            if(canAddMoreNumbersToCalculation(num1))
+                {
+                    num1 += number;
+                }
+        }
+
+    display.textContent = num1 + ' ' + operator + ' ' + num2;
+    checkForOperatorAvaliable();
+}
+
+buttonZero.addEventListener('click', () => addNumber('0'));
+buttonOne.addEventListener('click', () => addNumber('1'));
+buttonTwo.addEventListener('click', () => addNumber('2'));
+buttonThree.addEventListener('click', () => addNumber('3'));
+buttonFour.addEventListener('click', () => addNumber('4'));
+buttonFive.addEventListener('click', () => addNumber('5'));
+buttonSix.addEventListener('click', () => addNumber('6'));
+buttonSeven.addEventListener('click', () => addNumber('7'));
+buttonEight.addEventListener('click', () => addNumber('8'));
+buttonNine.addEventListener('click', () => addNumber('9'));
+
