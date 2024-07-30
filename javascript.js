@@ -85,6 +85,17 @@ function addNumber(number)
     checkForOperatorAvaliable();
 }
 
+function allClear()
+{
+    operatorAvaliable = false;
+    operatorPressed = false;
+    equalsAvaliable = false;
+    num1 = '';
+    num2 = '';
+    operator = '';
+    display.textContent = num1 + ' ' + operator + ' ' + num2;
+}
+
 buttonZero.addEventListener('click', () => addNumber('0'));
 buttonOne.addEventListener('click', () => addNumber('1'));
 buttonTwo.addEventListener('click', () => addNumber('2'));
@@ -95,4 +106,6 @@ buttonSix.addEventListener('click', () => addNumber('6'));
 buttonSeven.addEventListener('click', () => addNumber('7'));
 buttonEight.addEventListener('click', () => addNumber('8'));
 buttonNine.addEventListener('click', () => addNumber('9'));
+
+allClearButton.addEventListener('click', allClear);
 
