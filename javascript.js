@@ -6,6 +6,11 @@ let num2 = '';
 let operatorAvaliable = false;
 let operatorPressed = false;
 let equalsAvaliable = false;
+let num1DecimalPoint = false;
+let num2DecimalPoint = false;
+let oneCalculationComplete = false;
+let num1MinusSign = false;
+let num2MinusSign = false;
 
 const display = document.querySelector('#display');
 
@@ -44,7 +49,15 @@ function checkForOperatorAvaliable()
 }
 function canAddMoreNumbersToCalculation(input)
 {
-    if (input.includes('.') && input.length < 10)
+    if (input.includes('.') && input.includes('-') && input.length < 11)
+        {
+            return true;
+        }
+    else if (input.includes('-') && input.length < 10)
+        {
+            return true;
+        }
+    else if (input.length < 10 && input.includes('.'))
         {
             return true;
         }
@@ -68,7 +81,7 @@ function addNumber(number)
                     equalsAvaliable = true;
                 }
         }
-    else 
+    else if (oneCalculationComplete === false)
         {
             if(canAddMoreNumbersToCalculation(num1))
                 {
@@ -94,23 +107,61 @@ function addOperator(currentOperator) {
                         operator = '-';
                         display.textContent = num1 + ' ' + operator + ' ' + num2;
                         break;
-                        
                     case '÷':
                         operator = '÷';
                         display.textContent = num1 + ' ' + operator + ' ' + num2;
                         break;
-
                     case '×':
                         operator = '×';
                         display.textContent = num1 + ' ' + operator + ' ' + num2;
                         break;
-
                     case '%':
                         operator = '%';
                         equalsAvaliable = true;
                         break;
-
                 }
+        }
+}
+function addDecimalPoint()
+{
+    if (operatorPressed && num2DecimalPoint === false)
+        {
+            num2 += '.';
+            num2DecimalPoint = true;
+            display.textContent = num1 + ' ' + operator + ' ' + num2;
+        }
+    else if (num1DecimalPoint === false && oneCalculationComplete === false)
+        {
+            num1 += '.';
+            num1DecimalPoint = true;
+            display.textContent = num1 + ' ' + operator + ' ' + num2;
+        }
+}
+function addRemoveMinusSign ()
+{
+    if (operatorPressed && num2MinusSign === false)
+        {
+            num2 = '-' + num2;
+            num2MinusSign = true;
+            display.textContent = num1 + ' ' + operator + ' ' + num2;
+        }
+    else if (operatorPressed && num2MinusSign)
+        {
+            num2 = num2.replace('-','')
+            num2MinusSign = false;
+            display.textContent = num1 + ' ' + operator + ' ' + num2;
+        }
+    else if (num1MinusSign === false)
+        {   
+            num1 = '-' + num1;
+            num1MinusSign = true;
+            display.textContent = num1 + ' ' + operator + ' ' + num2;
+        }
+    else if (num1MinusSign)
+        {
+            num1 = num1.replace('-', '');
+            num1MinusSign = false;
+            display.textContent = num1 + ' ' + operator + ' ' + num2;
         }
 }
 function postCalculationSetup(totalNum)
@@ -121,6 +172,10 @@ function postCalculationSetup(totalNum)
     operatorAvaliable = true;
     num2 = '';
     num1 = totalNum.toString();
+    operator = '';
+    oneCalculationComplete = true;
+    num1DecimalPoint = false;
+    num2DecimalPoint = false;
 }
 function calculation()
 {
@@ -161,6 +216,9 @@ function allClear()
     num1 = '';
     num2 = '';
     operator = '';
+    num1DecimalPoint = false;
+    num2DecimalPoint = false;
+    oneCalculationComplete = false;
     display.textContent = num1 + ' ' + operator + ' ' + num2;
 }
 
@@ -179,11 +237,15 @@ addButton.addEventListener('click', () => addOperator('+'));
 subtractButton.addEventListener('click', () => addOperator('-'));
 divideButton.addEventListener('click', () => addOperator('÷'));
 multiplyButton.addEventListener('click', () => addOperator('×'));
+
+// Calculates a percentage of num1 as soon as the button is clicked
 percentageButton.addEventListener('click', function () {
     addOperator('%');
     calculation();
 });
 
+decimalButton.addEventListener('click', addDecimalPoint);
 allClearButton.addEventListener('click', allClear);
-equalsButton.addEventListener('click', calculation)
+equalsButton.addEventListener('click', calculation);
 
+plusMinus.addEventListener('click', addRemoveMinusSign)
