@@ -186,26 +186,68 @@ function calculation()
     {
         case '+':
             finalNum = parseFloat(num1) + parseFloat(num2);
-            postCalculationSetup(finalNum);
+            if (shouldRoundTo1DP(finalNum.toString()))
+                {
+                    finalNum = finalNum.toFixed(1);
+                }
+            postCalculationSetup(parseFloat(finalNum));
             break;
         case '-':
             finalNum = parseFloat(num1) - parseFloat(num2);
-            postCalculationSetup(finalNum);
+            if (shouldRoundTo1DP(finalNum.toString()))
+                {
+                    finalNum = finalNum.toFixed(1);
+                }
+            postCalculationSetup(parseFloat(finalNum));
             break;
         case '÷':
             finalNum = parseFloat(num1) / parseFloat(num2);
-            postCalculationSetup(finalNum);
+            if (shouldRoundTo1DP(finalNum.toString()))
+                {
+                    finalNum = finalNum.toFixed(1);
+                }
+            postCalculationSetup(parseFloat(finalNum));
             break;
         case '×':
             finalNum = parseFloat(num1) * parseFloat(num2);
-            postCalculationSetup(finalNum);
+            if (shouldRoundTo1DP(finalNum.toString()))
+                {
+                    finalNum = finalNum.toFixed(1);
+                }
+            postCalculationSetup(parseFloat(finalNum));
             break;
         case '%':
             finalNum = parseFloat(num1) / 100;
-            postCalculationSetup(finalNum);
+            if (shouldRoundTo1DP(finalNum.toString()))
+                {
+                    finalNum = finalNum.toFixed(1);
+                }
+            postCalculationSetup(parseFloat(finalNum));
             break;
     }
 }
+}
+// if number is large
+function shouldRoundTo1DP(num)
+{
+    if (operatorPressed && num.includes('.'))
+        {
+            if (num.indexOf('.') > 7 && num.length > 8)
+                {
+                    return true
+                }
+        }
+    else if (num.includes('.'))
+        {
+            if (num.indexOf('.') > 7 && num.length > 8)
+                {
+                    return true
+                }
+        }
+    else 
+    {
+        return false;
+    }
 }
 
 function allClear()
@@ -218,6 +260,8 @@ function allClear()
     operator = '';
     num1DecimalPoint = false;
     num2DecimalPoint = false;
+    num1MinusSign = false;
+    num2MinusSign = false;
     oneCalculationComplete = false;
     display.textContent = num1 + ' ' + operator + ' ' + num2;
 }
