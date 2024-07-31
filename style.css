@@ -3,6 +3,14 @@
     margin: 0;  
     box-sizing: border-box;  
 }
+button {
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 20px;
+    color: #dbd8e3;
+    background: #5c5470;
+    border-width: 0px;
+}
 body {
     width: 100%;
     height: 100%;
@@ -11,16 +19,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #2a2438; 
     }
 #calcContainer {
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    border: 2px solid rebeccapurple;
+    background-color: #352f44;
+    border-radius: 4px;
 }
 #display {
     width: 500px;
     height: 100px;
     /* Temporary to see the div*/
-    border:1px solid red;
+    border:1px solid rebeccapurple;
+    text-align: end;
+    font-size: 30px;
+    color: #dbd8e3;
+    padding-top: 30px;
+    padding-right: 30px;
 }
 .buttonContainer {
     display: flex;
@@ -29,5 +47,5 @@ body {
 
     align-items: center;
     justify-content: space-between;
-
+    
 }

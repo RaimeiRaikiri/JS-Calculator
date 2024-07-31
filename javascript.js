@@ -166,7 +166,7 @@ function addRemoveMinusSign ()
 }
 function postCalculationSetup(totalNum)
 {
-    display.textContent = totalNum.toString();
+    display.textContent = '= ' +totalNum.toString();
     equalsAvaliable = false;
     operatorPressed = false;
     operatorAvaliable = true;
