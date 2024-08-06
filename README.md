@@ -1,8 +1,29 @@
 # JS-Calculator
 
-The aim of this repository is to test my skills in using html, css and javascript together. Creating an on screen calculator using all 3 is a great way to do so as it can be done most efficiently and presentably using a combination of the 3.
+Welcome to the JS-Calculator repository!
+The aim of this repository is to test my skills in using html, css and javascript together. Creating an on screen calculator using all 3 is a great way to do so!
 
-To build the calculator:
+# About
+
+The website simply serves the purpose of displaying the calculator that can perform basic functionality and display the results on screen.
+
+# Features
+
+- Number buttons 0-9
+- Negative button, provides negative symbol functionality for negative numbers
+- Percentage button that immediately displays the percentage of the current onscreen number
+- The basic mathematical operations: add, subtract, divide and multiply
+- Decimal place button, allows for floats or decimal numbers to entered
+- AC button to reset the calculator
+- Equals button to display the results of the calcultion
+- A calculation between two numbers with 9 digits each
+- Allows follow up calculations using the running total after a calculation
+
+# To view the website
+
+- Follow this link - [JS-Calculator](https://raimeiraikiri.github.io/JS-Calculator/)
+
+# Steps for building the calculator (Non-specific)
 
 - To start off with a html skeleton of a container to hold all elements in the shape of a calculator.
 - This container should be center of the screen the screen, requiring css.
@@ -14,6 +35,14 @@ To build the calculator:
 - The results of the functions should be displayed on the display screen using javascript.
 - Once the basic functionality and structure is in order we can move onto styling using a combination of css and javascript.
 
-# To view the website
+# Contributing 
 
-- Follow this link - [JS-Calculator](https://raimeiraikiri.github.io/JS-Calculator/)
+1. Start by forking the repository
+2. Create a new branch in the forked repository
+3. Make any changes you wish
+4. Commit and push alterations to the main branch of the forked repository
+5. Create a pull request here to get your changes implemented
+
+# License 
+
+This project is licensed under the MIT License.
