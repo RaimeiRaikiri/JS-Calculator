@@ -3,6 +3,10 @@
 Welcome to the JS-Calculator repository!
 The aim of this repository is to test my skills in using html, css and javascript together. Creating an on screen calculator using all 3 is a great way to do so!
 
+# Notice 
+
+Raikiri45 is an alternate account of RaimeiRaikiri, and most commits were made accidentally through Raikiri45. This has been resolved.
+
 # About
 
 The website simply serves the purpose of displaying the calculator that can perform basic functionality and display the results on screen.
