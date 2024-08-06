@@ -5,47 +5,69 @@
 }
 button {
     border-radius: 30px;
-    padding: 20px;
+    padding: 2vh 2vw;
     font-size: 20px;
     color: #dbd8e3;
     background: #5c5470;
     border-width: 0px;
 }
 body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+
     align-items: center;
     background: #2a2438; 
     }
 #calcContainer {
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    border: 2px solid rebeccapurple;
+
+    width: 40vw;
+    height: 70vh;
+    padding: 0.5vw;
+    border: 0.25vw solid rebeccapurple;
     background-color: #352f44;
     border-radius: 4px;
 }
 #display {
-    width: 500px;
-    height: 100px;
+    width: 38.5vw;
+    height: 10vh;
     /* Temporary to see the div*/
-    border:1px solid rebeccapurple;
+    border: 0.125vw solid rebeccapurple;
     text-align: end;
     font-size: 30px;
     color: #dbd8e3;
-    padding-top: 30px;
-    padding-right: 30px;
+
 }
 .buttonContainer {
     display: flex;
-    width: 500px;
-    height: 100px;
+    width: 38vw;
+    height: 15vh;
 
     align-items: center;
     justify-content: space-between;
     
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 15vh;
+}
+#Title {
+    color: #dbd8e3;
+    display: flex;
+    justify-content: center;
+    font-size: clamp(20px, 4vw, 40px);
+    width: 100vw;
+    height: 4vh;
+}
+footer {
+    color: #dbd8e3;
+    margin-top: 8vh;
 }
