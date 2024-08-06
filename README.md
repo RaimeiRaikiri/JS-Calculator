@@ -14,3 +14,6 @@ To build the calculator:
 - The results of the functions should be displayed on the display screen using javascript.
 - Once the basic functionality and structure is in order we can move onto styling using a combination of css and javascript.
 
+# To view the website
+
+- Follow this link - [JS-Calculator](https://raimeiraikiri.github.io/JS-Calculator/)
