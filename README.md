@@ -45,4 +45,4 @@ The website simply serves the purpose of displaying the calculator that can perf
 
 # License 
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - [MIT License](https://www.mit.edu/~amini/LICENSE.md)
